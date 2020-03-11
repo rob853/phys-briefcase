@@ -6,7 +6,7 @@ namespace phys_briefcase
         public int GreenPin { get; }
         public int BluePin { get; }
 
-        public LedStripPins(int redPin, int bluePin, int greenPin)
+        public LedStripPins(int redPin, int greenPin, int bluePin)
         {
             RedPin = redPin;
             GreenPin = greenPin;
