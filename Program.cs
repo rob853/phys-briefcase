@@ -1,38 +1,21 @@
 ﻿using System;
-using System.Device.Gpio;
-using System.Device.Pwm.Drivers;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace phys_led
+namespace phys_briefcase
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello PWM!");
-
-            using(var pwmChannel = new SoftwarePwmChannel(16, 400, 0, true))
+            var briefcaseHandler =
+                new BriefcaseHandler(new DistanceSensor(new DistancePins(4, 17)),
+                                     new LedStripHandler(new LedStripPins(1, 2, 3)));
+            
+            Console.CancelKeyPress += delegate
             {
-                pwmChannel.Start();
-
-                for (var loops = 0; loops < 10; loops++)
-                {
-                    for (double fill = 0.0; fill <= 1.0; fill += 0.1)
-                    {
-                        System.Console.WriteLine(fill);
-                        pwmChannel.DutyCycle = fill;
-                        Thread.Sleep(10);
-                    }
-
-                    for (double fill = 1.0; fill >= 0.0; fill -= 0.1)
-                    {
-                        System.Console.WriteLine(fill);
-                        pwmChannel.DutyCycle = fill;
-                        Thread.Sleep(10);
-                    }
-                }
-            }
+                briefcaseHandler.StopSensing();
+            };  
+            
+            briefcaseHandler.StartSensing();
         }
     }
 }
