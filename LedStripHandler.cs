@@ -11,9 +11,9 @@ namespace phys_briefcase
 
         public LedStripHandler(LedStripPins pins)
         {
-            _redChannel = new SoftwarePwmChannel(pins.RedPin, 200, 0.5);
-            _greenChannel = new SoftwarePwmChannel(pins.GreenPin, 200, 0.5);
-            _blueChannel = new SoftwarePwmChannel(pins.BluePin, 200, 0.5);
+            _redChannel = new SoftwarePwmChannel(pins.RedPin, 400, 0.8, true);
+            _greenChannel = new SoftwarePwmChannel(pins.GreenPin, 400, 0.8, true);
+            _blueChannel = new SoftwarePwmChannel(pins.BluePin, 10, 0.8, true);
         }
 
         public void TurnOnStrip()
@@ -21,7 +21,7 @@ namespace phys_briefcase
             Console.WriteLine("Turning on");
             _redChannel.Start();
             _greenChannel.Start();
-            _blueChannel.Start();
+            //_blueChannel.Start();
         }
 
         public void TurnOffStrip()
@@ -29,7 +29,7 @@ namespace phys_briefcase
             Console.WriteLine("Turning off");
             _redChannel.Stop();
             _greenChannel.Stop();
-            _blueChannel.Stop();
+            // _blueChannel.Stop();
         }
 
         public void Dispose()

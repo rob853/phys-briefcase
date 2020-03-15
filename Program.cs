@@ -7,8 +7,8 @@ namespace phys_briefcase
         static void Main(string[] args)
         {
             var briefcaseHandler =
-                new BriefcaseHandler(new DistanceSensor(new DistancePins(4, 17)),
-                                     new LedStripHandler(new LedStripPins(1, 2, 3)));
+                new BriefcaseHandler(new DistanceSensor(new DistancePins(18, 24)),
+                                     new LedStripHandler(new LedStripPins(20, 21, 16)));
             
             Console.CancelKeyPress += delegate
             {

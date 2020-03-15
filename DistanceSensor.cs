@@ -1,5 +1,3 @@
-using Iot.Device.Hcsr04;
-
 namespace phys_briefcase
 {
     public class DistanceSensor
@@ -17,6 +15,7 @@ namespace phys_briefcase
             {
                 using (var sensor = new Hcsr04(_pins.TriggerPin, _pins.EchoPin))
                 {
+                    System.Console.WriteLine(sensor.Distance);
                     return sensor.Distance;
                 }
             }
